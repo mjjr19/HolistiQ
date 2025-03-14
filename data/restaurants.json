@@ -1,0 +1,59 @@
+{
+    "restaurants": [
+      {
+        "id": 1,
+        "name": "Kati Vegan Thai",
+        "cuisine": "Thai",
+        "healthScore": 9.2,
+        "priceRange": "$$",
+        "location": "South Lake Union",
+        "dietaryOptions": ["vegan", "gluten-free", "organic"],
+        "topDishes": ["Hot Basil Fried Rice", "Devil Mushroom Wings", "Kra Pao with Rice"],
+        "description": "Seattle's premier destination for creative, nourishing plant-based cuisine."
+      },
+      {
+        "id": 2,
+        "name": "India Bistro",
+        "cuisine": "Indian",
+        "healthScore": 8.7,
+        "priceRange": "$$",
+        "location": "Ballard",
+        "dietaryOptions": ["vegan", "vegetarian", "non-vegetarian"],
+        "topDishes": ["Yellow Dal", "Paneer Tikka", "Butter Chicken"],
+        "description": "Simple, comfy Indian restaurant serving up classic tandoori dishes & a spicy lunch buffet."
+      },
+      {
+        "id": 3,
+        "name": "Plantiful Cafe",
+        "cuisine": "American",
+        "healthScore": 8.9,
+        "priceRange": "$$",
+        "location": "Capitol Hill",
+        "dietaryOptions": ["heart-healthy", "plant-based", "whole grain"],
+        "topDishes": ["Tofu Banh Mi", "Super-Bowl Acai", "Habanero Burger"],
+        "description": "Plant-based cafe dishing up health-conscious fare, including acai bowls, smoothies, pizza, and burgers."
+      },
+      {
+        "id": 4,
+        "name": "Miss Pho",
+        "cuisine": "Vietnamese",
+        "healthScore": 8.5,
+        "priceRange": "$",
+        "location": "Greenwood",
+        "dietaryOptions": ["vegetarian", "non-vegetarian", "low-calorie"],
+        "topDishes": ["Ginger Soy Tofu", "Chicken Pho", "Stir Fried Tofu and Veggie Roll"],
+        "description": "Casual Vietnamese noodle bar known for its pho and other noodle soups, plus vegetarian options."
+      },
+      {
+        "id": 5,
+        "name": "Hiroshi's Poke",
+        "cuisine": "Hawaiian/Japanese",
+        "healthScore": 8.0,
+        "priceRange": "$",
+        "location": "University District",
+        "dietaryOptions": ["low-carb", "pescatarian", "gluten-free"],
+        "topDishes": ["Waikiki Bowl", "Spam Musubi", "Lomi Lomi Salmon"],
+        "description": "unassuming Japanese/Hawaiian eatery with limited seating preparing custom poke bowls."
+      }
+    ]
+  }
