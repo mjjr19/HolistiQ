@@ -1,0 +1,299 @@
+/* form-check-styles.css - Styles for the Exercise Form Check feature */
+
+/* Form Check Container */
+#form-check-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* Form Check Toggle Button */
+.form-check-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4B0082; /* Deep Purple */
+  color: white;
+  border: 2px solid #FFD700; /* Gold border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.form-check-toggle-btn:hover {
+  background-color: #6A0DAD; /* Lighter Purple */
+  transform: translateY(-3px);
+}
+
+/* Form Check Overlay */
+.form-check-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(75, 0, 130, 0.9); /* Semi-transparent purple */
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+body.form-check-open .form-check-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Form Check Wrapper */
+.form-check-wrapper {
+  width: 90%;
+  max-width: 700px;
+  height: 80vh;
+  max-height: 700px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 3px solid #FFD700; /* Gold border */
+  pointer-events: auto;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.form-check-wrapper.hidden {
+  display: none;
+}
+
+body.form-check-open .form-check-wrapper {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Form Check Header */
+.form-check-header {
+  background-color: #4B0082; /* Deep Purple */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-check-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Form Check Content */
+.form-check-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Form Check Messages */
+.form-check-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Messages */
+.message {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message p {
+  margin: 0 0 8px 0;
+}
+
+.message p:last-child {
+  margin-bottom: 0;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #4B0082; /* Deep Purple */
+  color: white;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #FFD700; /* Gold */
+  color: #333;
+}
+
+/* Form Check Input Area */
+.form-check-input-area {
+  padding: 15px 20px;
+  border-top: 1px solid #eee;
+  background-color: white;
+}
+
+/* Upload Container */
+.upload-container {
+  margin-bottom: 15px;
+}
+
+.upload-video-btn {
+  background-color: #4B0082; /* Deep Purple */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.upload-video-btn:hover {
+  background-color: #6A0DAD; /* Lighter Purple */
+  transform: translateY(-2px);
+}
+
+.upload-video-btn::before {
+  content: "📷";
+  margin-right: 8px;
+}
+
+.video-preview-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+}
+
+/* Message Container */
+.message-container {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+#user-message {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  resize: none;
+  height: 50px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: border-color 0.3s ease;
+}
+
+#user-message:focus {
+  outline: none;
+  border-color: #4B0082;
+}
+
+.send-message-btn {
+  background-color: #4B0082; /* Deep Purple */
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.send-message-btn:hover {
+  background-color: #6A0DAD; /* Lighter Purple */
+  transform: translateY(-2px);
+}
+
+.send-message-btn::after {
+  content: "→";
+  font-size: 24px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .form-check-wrapper {
+    width: 95%;
+    height: 90vh;
+    max-height: none;
+    border-radius: 10px;
+  }
+  
+  .form-check-header h2 {
+    font-size: 20px;
+  }
+  
+  .message {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-check-wrapper {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+  
+  .form-check-toggle-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
