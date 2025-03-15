@@ -16,6 +16,7 @@ app.post('/api/chat', async (req, res) => {
   try {
     // Get messages from request body
     const { messages } = req.body;
+    
 
     // Call OpenAI API
     const response = await fetch('https://api.openai.com/v1/chat/completions', {

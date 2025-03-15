@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HolistiQ - User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #A68BFF;           /* Main purple color */
+            --primary-dark: #8F75EB;      /* Darker shade of purple for hover effects */
+            --secondary: #FFD15C;         /* Yellow accent color for CTA buttons */
+            --secondary-dark: #EBBD4C;    /* Darker yellow for hover effects */
+            --dark: #202124;              /* Dark background color */
+            --light: #F5F5F7;             /* Light color for contrast elements */
+            --white: #FFFFFF;             /* White for card backgrounds */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #8472FF 100%);
+            
+            /* Section-specific colors */
+            --mental-health: #A68BFF;     /* Keep consistent with primary */
+            --nutrition: #FFD15C;         /* Use accent color */
+            --fitness: #7B68EE;           /* Slightly different purple shade */
+            
+            /* Card and shadow styles */
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 48px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background-color: var(--light);
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .stat-item i {
+            color: var(--primary);
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .profile-card h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .profile-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .metrics-list, .preferences-list {
+            list-style: none;
+        }
+
+        .metrics-list li, .preferences-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .metrics-list li:last-child, .preferences-list li:last-child {
+            border-bottom: none;
+        }
+
+        .metrics-list li span:first-child, .preferences-list li span:first-child {
+            color: #546E7A;
+        }
+
+        .metrics-list li span:last-child, .preferences-list li span:last-child {
+            font-weight: 600;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: var(--light);
+            color: var(--dark);
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .tag.nutrition {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: var(--nutrition);
+        }
+
+        .tag.fitness {
+            background-color: rgba(3, 169, 244, 0.1);
+            color: var(--fitness);
+        }
+
+        .tag.mental {
+            background-color: rgba(156, 39, 176, 0.1);
+            color: var(--mental);
+        }
+
+        .cultural-preferences {
+            margin-top: 5px;
+        }
+
+        .check-in-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .check-in-option:hover {
+            background-color: var(--light);
+        }
+
+        .check-in-option input {
+            margin-right: 15px;
+        }
+
+        .check-in-option label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .plans-tabs {
+            display: flex;
+            border-bottom: 1px solid #E0E0E0;
+            margin-bottom: 20px;
+        }
+
+        .plan-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            color: #546E7A;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .plan-tab.active {
+            color: var(--primary);
+        }
+
+        .plan-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .plan-content {
+            display: none;
+        }
+
+        .plan-content.active {
+            display: block;
+        }
+
+        .meal-plan, .workout-plan, .habit-plan {
+            margin-bottom: 30px;
+        }
+
+        .plan-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--primary);
+        }
+
+        .meal-plan .plan-card {
+            border-left-color: var(--nutrition);
+        }
+
+        .workout-plan .plan-card {
+            border-left-color: var(--fitness);
+        }
+
+        .habit-plan .plan-card {
+            border-left-color: var(--mental);
+        }
+
+        .plan-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plan-card h3 .plan-actions {
+            font-size: 16px;
+        }
+
+        .plan-card h3 .plan-actions i {
+            margin-left: 10px;
+            cursor: pointer;
+            color: #B0BEC5;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card h3 .plan-actions i:hover {
+            color: var(--primary);
+        }
+
+        .meal-list, .workout-list, .habit-list {
+            list-style: none;
+        }
+
+        .meal-list li, .workout-list li, .habit-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+        }
+
+        .meal-list li:last-child, .workout-list li:last-child, .habit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .meal-time, .workout-sets, .habit-streak {
+            width: 80px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .meal-desc, .workout-desc, .habit-desc {
+            flex: 1;
+        }
+
+        .meal-cals, .workout-time, .habit-status {
+            font-size: 14px;
+            color: #546E7A;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: var(--light);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            width: 75%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-sidebar {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Holisti<span>Q</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                    <li><a href="#" class="btn">Log Out</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h1>Tony Stark</h1>
+                    <p>Software Developer at Amazon</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Member since Jan 2025</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-fire"></i>
+                            <span>14-day streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>8 goals completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <!-- Sidebar -->
+                <div class="profile-sidebar">
+                    <!-- Body Metrics -->
+                    <div class="profile-card">
+                        <h2>Body Metrics</h2>
+                        <ul class="metrics-list">
+                            <li>
+                                <span>Height</span>
+                                <span>175 cm (5'9")</span>
+                            </li>
+                            <li>
+                                <span>Weight</span>
+                                <span>78 kg (172 lbs)</span>
+                            </li>
+                            <li>
+                                <span>Gender</span>
+                                <span>Male</span>
+                            </li>
+                            <li>
+                                <span>Age</span>
+                                <span>32 years</span>
+                            </li>
+                            <li>
+                                <span>BMI</span>
+                                <span>25.5</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="profile-card">
+                        <h2>Preferences & Goals</h2>
+                        <ul class="preferences-list">
+                            <li>
+                                <span>Primary Goal</span>
+                                <span>Lose Weight</span>
+                            </li>
+                            <li>
+                                <span>Target Timeline</span>
+                                <span>6 months</span>
+                            </li>
+                            <li>
+                                <span>Sport</span>
+                                <span>Basketball</span>
+                            </li>
+                            <li>
+                                <span>Workout Frequency</span>
+                                <span>5x / week</span>
+                            </li>
+                            <li>
+                                <span>Workout Duration</span>
+                                <span>45-60 minutes</span>
+                            </li>
+                            <li>
+                                <span>Dietary Preferences</span>
+                                <div class="cultural-preferences">
+                                    <span class="tag nutrition">Halal Food</span>
+                                    <span class="tag nutrition">Indian Cuisine</span>
+                                    <span class="tag nutrition">Vegetable Lover</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Check-in Preferences -->
+                    <div class="profile-card">
+                        <h2>Check-in Preferences</h2>
+                        <div>
+                            <p>How often should the AI coach check in with you?</p>
+                            <div class="check-in-options">
+                                <div class="check-in-option">
+                                    <input type="radio" id="daily" name="check-in" checked>
+                                    <label for="daily">Daily check-ins</label>
+                                </div>
+                                <div class="check-in-option">
+                                    <input type="radio" id="thrice" name="check-in">
+                                    <label for="thrice">Three times a week</label>
+                                </div>
+                                <div class="check-in-option">
+                                    <input type="radio" id="weekly" name="check-in">
+                                    <label for="weekly">Weekly check-ins</label>
+                                </div>
+                                <div class="check-in-option">
+                                    <input type="radio" id="manual" name="check-in">
+                                    <label for="manual">Only when I initiate</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="profile-main">
+                    <div class="profile-card">
+                        <div class="plans-tabs">
+                            <div class="plan-tab active" data-tab="meal">Meal Plans</div>
+                            <div class="plan-tab" data-tab="workout">Workout Plans</div>
+                            <div class="plan-tab" data-tab="habit">Habit Tracker</div>
+                        </div>
+
+                        <!-- Meal Plans -->
+                        <div class="plan-content active" id="meal-plan">
+                            <div class="meal-plan">
+                                <div class="plan-card">
+                                    <h3>
+                                        Weekday Balanced Plan
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Balanced plan focused on protein and moderate carbs, with Indian-inspired dishes.</p>
+                                    <ul class="meal-list">
+                                        <li>
+                                            <div class="meal-time">Breakfast</div>
+                                            <div class="meal-desc">Masala egg white omelette with whole grain toast and avocado</div>
+                                            <div class="meal-cals">420 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Snack</div>
+                                            <div class="meal-desc">Greek yogurt with mixed berries and honey</div>
+                                            <div class="meal-cals">180 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Lunch</div>
+                                            <div class="meal-desc">Tandoori chicken with quinoa and roasted vegetables</div>
+                                            <div class="meal-cals">550 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Snack</div>
+                                            <div class="meal-desc">Handful of mixed nuts and an apple</div>
+                                            <div class="meal-cals">210 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Dinner</div>
+                                            <div class="meal-desc">Grilled fish curry with brown rice and steamed greens</div>
+                                            <div class="meal-cals">490 kcal</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="plan-card">
+                                    <h3>
+                                        Weekend Flexibility Plan
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>More flexible plan for social occasions with smart choices.</p>
+                                    <ul class="meal-list">
+                                        <li>
+                                            <div class="meal-time">Breakfast</div>
+                                            <div class="meal-desc">Spiced vegetable paratha with raita and fresh fruit</div>
+                                            <div class="meal-cals">460 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Lunch</div>
+                                            <div class="meal-desc">Restaurant meal guidelines (protein focus, side salad)</div>
+                                            <div class="meal-cals">650-750 kcal</div>
+                                        </li>
+                                        <li>
+                                            <div class="meal-time">Dinner</div>
+                                            <div class="meal-desc">Homemade lentil soup with roti and grilled paneer</div>
+                                            <div class="meal-cals">520 kcal</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workout Plans -->
+                        <div class="plan-content" id="workout-plan">
+                            <div class="workout-plan">
+                                <div class="plan-card">
+                                    <h3>
+                                        Strength Training (Monday/Wednesday/Friday)
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Focus on compound movements with progressive overload.</p>
+                                    <ul class="workout-list">
+                                        <li>
+                                            <div class="workout-sets">4 x 10</div>
+                                            <div class="workout-desc">Barbell Squats</div>
+                                            <div class="workout-time">60-90 sec rest</div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">4 x 12</div>
+                                            <div class="workout-desc">Dumbbell Bench Press</div>
+                                            <div class="workout-time">60-90 sec rest</div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">3 x 10</div>
+                                            <div class="workout-desc">Bent-Over Rows</div>
+                                            <div class="workout-time">60 sec rest</div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">3 x 15</div>
+                                            <div class="workout-desc">Shoulder Press</div>
+                                            <div class="workout-time">60 sec rest</div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">3 x 12</div>
+                                            <div class="workout-desc">Romanian Deadlifts</div>
+                                            <div class="workout-time">60-90 sec rest</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="plan-card">
+                                    <h3>
+                                        Basketball Conditioning (Tuesday/Thursday)
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Sport-specific training to improve basketball performance.</p>
+                                    <ul class="workout-list">
+                                        <li>
+                                            <div class="workout-sets">5 mins</div>
+                                            <div class="workout-desc">Dynamic Warm-up</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">10 mins</div>
+                                            <div class="workout-desc">Agility Ladder Drills</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">10 mins</div>
+                                            <div class="workout-desc">Defensive Slide Drills</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">15 mins</div>
+                                            <div class="workout-desc">Shooting and Dribbling Drills</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">20 mins</div>
+                                            <div class="workout-desc">3v3 Half-Court Game</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="plan-card">
+                                    <h3>
+                                        Active Recovery (Saturday)
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Light activity to promote recovery and maintain movement.</p>
+                                    <ul class="workout-list">
+                                        <li>
+                                            <div class="workout-sets">30 mins</div>
+                                            <div class="workout-desc">Light Jogging or Brisk Walking</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">15 mins</div>
+                                            <div class="workout-desc">Dynamic Stretching</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                        <li>
+                                            <div class="workout-sets">15 mins</div>
+                                            <div class="workout-desc">Foam Rolling Session</div>
+                                            <div class="workout-time"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Habit Tracker -->
+                        <div class="plan-content" id="habit-plan">
+                            <div class="habit-plan">
+                                <div class="plan-card">
+                                    <h3>
+                                        Daily Wellness Habits
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Consistency score: 82%</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 82%"></div>
+                                    </div>
+                                    <ul class="habit-list">
+                                        <li>
+                                            <div class="habit-streak">14 days</div>
+                                            <div class="habit-desc">Drink 3L of water daily</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">8 days</div>
+                                            <div class="habit-desc">10-minute morning meditation</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">21 days</div>
+                                            <div class="habit-desc">Protein with every meal</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">5 days</div>
+                                            <div class="habit-desc">Bedtime by 10:30 PM</div>
+                                            <div class="habit-status"><i class="fas fa-times-circle" style="color: #F44336"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">12 days</div>
+                                            <div class="habit-desc">Take stairs instead of elevator</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="plan-card">
+                                    <h3>
+                                        Weekly Wellness Habits
+                                        <div class="plan-actions">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </h3>
+                                    <p>Consistency score: 75%</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                    <ul class="habit-list">
+                                        <li>
+                                            <div class="habit-streak">3 weeks</div>
+                                            <div class="habit-desc">Meal prep on Sundays</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">2 weeks</div>
+                                            <div class="habit-desc">Digital detox for 4 hours</div>
+                                            <div class="habit-status"><i class="fas fa-check-circle" style="color: var(--primary)"></i></div>
+                                        </li>
+                                        <li>
+                                            <div class="habit-streak">1 week</div>
+                                            <div class="habit-desc">Try one new healthy recipe</div>
+                                            <div class="habit-status"><i class="fas fa-times-circle" style="color: #F44336"></i></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 HolistiQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Tabs Functionality
+        const planTabs = document.querySelectorAll('.plan-tab');
+        const planContents = document.querySelectorAll('.plan-content');
+
+        planTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                planTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all content
+                planContents.forEach(content => content.classList.remove('active'));
+                
+                // Show content corresponding to clicked tab
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId + '-plan').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
