@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HolistiQ - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #A68BFF;           /* Main purple color */
+            --primary-dark: #8F75EB;      /* Darker shade of purple for hover effects */
+            --secondary: #FFD15C;         /* Yellow accent color for CTA buttons */
+            --secondary-dark: #EBBD4C;    /* Darker yellow for hover effects */
+            --dark: #202124;              /* Dark background color */
+            --light: #F5F5F7;             /* Light color for contrast elements */
+            --white: #FFFFFF;             /* White for card backgrounds */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #8472FF 100%);
+            
+            /* Section-specific colors */
+            --mental-health: #A68BFF;     /* Keep consistent with primary */
+            --nutrition: #FFD15C;         /* Use accent color */
+            --fitness: #7B68EE;           /* Slightly different purple shade */
+            
+            /* Card and shadow styles */
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(rgba(38, 50, 56, 0.8), rgba(38, 50, 56, 0.8)), url('/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--gradient);
+            left: 20%;
+            bottom: -10px;
+        }
+
+        .section-header p {
+            color: #546E7A;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Story Section */
+        .story-section {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/500/500') no-repeat;
+            background-position: right top;
+            background-size: 40%;
+            opacity: 0.05;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+            font-size: 22px;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 15px;
+            right: -140px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: -140px;
+            right: auto;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .team-photo {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            margin-top: 0;
+            color: var(--dark);
+            font-size: 20px;
+        }
+
+        .team-info p {
+            color: #546E7A;
+            margin-bottom: 15px;
+        }
+
+        .team-origin {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Values Section */
+        .values-section {
+            background-color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+            color: var(--white);
+        }
+
+        .value-card:hover::before {
+            height: 100%;
+        }
+
+        .value-card:hover h3, .value-card:hover p {
+            color: var(--white);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .value-card h3 {
+            margin-top: 0;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .value-card p {
+            margin-bottom: 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Why Choose Section */
+        .why-choose-section {
+            background-color: var(--light);
+        }
+
+        .why-choose-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .why-choose-text {
+            flex: 1;
+        }
+
+        .why-choose-image {
+            flex: 1;
+        }
+
+        .why-choose-image img {
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature-list {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon {
+            min-width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 20px;
+            margin-right: 20px;
+        }
+
+        .feature-text h3 {
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-text p {
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background: var(--light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+        }
+
+        .animate.active {
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a {
+            color: #B0BEC5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #37474F;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #37474F;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .about-content, .why-choose-content {
+                flex-direction: column;
+            }
+
+            .why-choose-content {
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+
+            .timeline-date {
+                position: relative;
+                right: auto;
+                left: auto;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            .timeline-item:nth-child(even) .timeline-date {
+                left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Holisti<span>Q</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                    <li><a href="index.html#contact" class="btn">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Team Behind <span>HolistiQ</span></h1>
+            <p>Discover our story, mission, and the values that drive us to revolutionize health and wellness through AI technology and cultural inclusivity.</p>
+        </div>
+    </section>
+
+    <!-- About HolistiQ Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>About HolistiQ</h2>
+                <p>Redefining health coaching through artificial intelligence and cultural understanding</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image animate">
+                    <img src="AIfitness.png" alt="HolistiQ App Interface">
+                </div>
+                <div class="about-text animate">
+                    <h3>Revolutionary AI-Powered Health Coach</h3>
+                    <p>HolistiQ is more than just another fitness app. We're a <span class="highlight">revolutionary AI-powered health coach</span> that truly understands your unique background, preferences, and goals. Our platform bridges the gap between technology and personal wellness by incorporating cultural awareness into every aspect of your health journey.</p>
+                    
+                    <p>Unlike traditional health apps that offer generic, one-size-fits-all solutions, HolistiQ <span class="highlight">challenges outdated fitness myths</span> and restrictive dieting approaches. We believe in sustainable lifestyle changes backed by science, not temporary fixes or unrealistic regimens.</p>
+                    
+                    <p>Our AI engine continuously learns from your progress, preferences, and feedback to deliver increasingly personalized recommendations that evolve with you. Whether you're looking to improve your nutrition, enhance your fitness routine, or nurture your mental wellbeing, HolistiQ provides a <span class="highlight">scientifically-backed, personalized wellness journey</span> tailored specifically to you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Our Story</h2>
+                <p>How four MSIS students with diverse cultural backgrounds created HolistiQ</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">January 2025</span>
+                        <h3>The Beginning</h3>
+                        <p>Four MSIS students at the Foster School of Business—Mubasheer, Simran, Emily, and Vanroth—connect through their shared passion for technology and wellness.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">January 2025</span>
+                        <h3>Identifying the Problem</h3>
+                        <p>Through personal experiences and market research, the team identifies significant pain points in the health and wellness industry: lack of cultural awareness, generic recommendations, and the prevalence of ineffective "bro-science" advice.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">January 2025</span>
+                        <h3>The Spark</h3>
+                        <p>In Professor Leo's class, they're assigned a project to leverage machine learning and AI to solve a real-world problem. The team decides to tackle the wellness industry's shortcomings head-on.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">February 2025</span>
+                        <h3>Concept in Class Presentation</h3>
+                        <p>The first HolistiQ prototype is developed, combining AI-driven recommendations with culturally-aware nutrition guidance and evidence-based fitness advice. The team presents their idea to the class with high-level professional judges who gave them critical feedback.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">February 2025</span>
+                        <h3>Back to the drawing board</h3>
+                        <p>After receiving positive and critical feedback, the team goes back to the drawing board and leveraging new knowledge acquired in class, comes up with the features that will define HolistiQ.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <span class="timeline-date">March 2025</span>
+                        <h3>HolistiQ Launches</h3>
+                        <p>HolistiQ, its full concept is presented to a classroom full of Professional Judges, leaders of AI, from various high-level companies. HolistiQ is set to launch, bringing AI-powered, culturally-aware health coaching to users worldwide with a mission to redefine wellness through technology and inclusivity.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member animate">
+                    <div class="team-photo" style="background-image: url('/FosterGrad.jpg')"></div>
+                    <div class="team-info">
+                        <span class="team-origin">Indonesian</span>
+                        <h3>Mubasheer</h3>
+                        <p>NASM Certified Personal Trainer & AI Specialist</p>
+                    </div>
+                </div>
+                
+                <div class="team-member animate">
+                    <div class="team-photo" style="background-image: url('/Simran.jpg')"></div>
+                    <div class="team-info">
+                        <span class="team-origin">Indian</span>
+                        <h3>Simran</h3>
+                        <p>AI Specialist % UX Design</p>
+                    </div>
+                </div>
+                
+                <div class="team-member animate">
+                    <div class="team-photo" style="background-image: url('Emily.jpeg')"></div>
+                    <div class="team-info">
+                        <span class="team-origin">Vietnamese</span>
+                        <h3>Emily</h3>
+                        <p>Data Analytics & Business Strategy</p>
+                    </div>
+                </div>
+                
+                <div class="team-member animate">
+                    <div class="team-photo" style="background-image: url('/Vanroth.png')"></div>
+                    <div class="team-info">
+                        <span class="team-origin">Cambodian</span>
+                        <h3>Vanroth</h3>
+                        <p>IT Bro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission & Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Our Mission & Values</h2>
+                <p>Empowering users with culturally aware, AI-driven health coaching that evolves with your journey</p>
+            </div>
+            
+            <div class="animate">
+                <h3 style="text-align: center; margin-bottom: 40px; font-size: 24px;">Our Mission</h3>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px;">At HolistiQ, our mission is to redefine wellness through AI-powered, culturally inclusive health coaching. We believe that true well-being is holistic, encompassing nutrition, fitness, and mental health while respecting the unique lifestyles, cultures, and traditions of every individual. We leverage cutting-edge AI to create personalized health solutions that empower you to thrive—without restrictive diets, generic fitness plans, or one-size-fits-all approaches.
+
+                    We’re here to help you feel good about yourself, eat the foods you love, and build sustainable habits that enhance your life. Say goodbye to bro-science and hello to science-backed, culturally intelligent wellness.</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Inclusivity</h3>
+                    <p>We celebrate cultural diversity and design our platform to be accessible and relevant to people from all backgrounds and traditions.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Personalization</h3>
+                    <p>We leverage cutting-edge artificial intelligence to create truly personalized experiences that evolve with your unique journey and needs.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science Over Trends</h3>
+                    <p>We base our recommendations on evidence-based research and proven methodologies, not passing fads or unsubstantiated claims.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3>Empowerment</h3>
+                    <p>We provide the knowledge, tools, and support needed for users to take control of their health journey with confidence and autonomy.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We promote sustainable lifestyle changes that can be maintained long-term, rather than quick fixes or extreme regimens.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Holistic Well-Being</h3>
+                    <p>We recognize the interconnectedness of physical, mental, and emotional health, addressing wellness from a comprehensive perspective.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose HolistiQ Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Why Choose HolistiQ?</h2>
+                <p>Discover what sets us apart from traditional fitness and nutrition platforms</p>
+            </div>
+            
+            <div class="why-choose-content">
+                <div class="why-choose-text animate">
+                    <h3>Redefining Health Coaching Through Technology & Inclusivity</h3>
+                    <p>In a world of generic fitness apps and one-size-fits-all nutrition plans, HolistiQ stands out by delivering a truly personalized experience that respects your cultural background, adapts to your progress, and provides science-backed guidance for sustainable results.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item animate">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>AI-driven health coaching tailored to YOU</h3>
+                                <p>Our advanced AI engine learns your preferences, habits, and responses to create a completely personalized experience that evolves with your journey.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item animate">
+                            <div class="feature-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Science-backed insights, no gimmicks</h3>
+                                <p>We cut through the noise of fitness trends and questionable "bro-science" to deliver evidence-based recommendations you can trust.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item animate">
+                            <div class="feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Culturally inclusive nutrition & fitness</h3>
+                                <p>Our platform celebrates diversity by incorporating cultural preferences and traditions into your personalized meal and workout plans.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item animate">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Mental health & habit tracking integrated</h3>
+                                <p>We recognize that true wellness encompasses mind and body, integrating mental wellbeing and habit formation into your holistic health journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="why-choose-image animate">
+                    <img src="FigmaLog.png" alt="HolistiQ Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="animate">Ready to Transform Your Wellness Journey?</h2>
+            <p class="animate">Experience the future of personalized health coaching with HolistiQ. Discover how our AI-powered platform can help you achieve your fitness, nutrition, and wellness goals in a way that respects your unique background and preferences.</p>
+            <div class="animate">
+                <a href="demo.html" class="btn btn-light">Try Our Demo</a>
+                <a href="features.html" class="btn" style="margin-left: 15px;">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>HolistiQ</h4>
+                    <p>AI-powered fitness and nutrition platform revolutionizing personalized health management.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="features.html">Nutrition</a></li>
+                        <li><a href="features.html">Fitness</a></li>
+                        <li><a href="features.html">Mental Health</a></li>
+                        <li><a href="demo.html">AI Trainer</a></li>
+                        <li><a href="features.html">Progress Tracking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#values">Our Values</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HolistiQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Scroll Animation
+        const animateElements = document.querySelectorAll('.animate');
+        
+        function checkIfInView() {
+            const windowHeight = window.innerHeight;
+            const windowTopPosition = window.scrollY;
+            const windowBottomPosition = windowTopPosition + windowHeight;
+            
+            animateElements.forEach(element => {
+                const elementHeight = element.offsetHeight;
+                const elementTopPosition = element.offsetTop;
+                const elementBottomPosition = elementTopPosition + elementHeight;
+                
+                // Check if element is within viewport
+                if (elementBottomPosition >= windowTopPosition && elementTopPosition <= windowBottomPosition) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        // Run on page load
+        window.addEventListener('load', checkIfInView);
+        
+        // Run on scroll
+        window.addEventListener('scroll', checkIfInView);
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

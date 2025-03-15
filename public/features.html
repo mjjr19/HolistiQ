@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HolistiQ - Features</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #A68BFF;           /* Main purple color */
+            --primary-dark: #8F75EB;      /* Darker shade of purple for hover effects */
+            --secondary: #FFD15C;         /* Yellow accent color for CTA buttons */
+            --secondary-dark: #EBBD4C;    /* Darker yellow for hover effects */
+            --dark: #202124;              /* Dark background color */
+            --light: #F5F5F7;             /* Light color for contrast elements */
+            --white: #FFFFFF;             /* White for card backgrounds */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #8472FF 100%);
+            
+            /* Section-specific colors */
+            --mental-health: #A68BFF;     /* Keep consistent with primary */
+            --nutrition: #FFD15C;         /* Use accent color */
+            --fitness: #7B68EE;           /* Slightly different purple shade */
+            
+            /* Card and shadow styles */
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            background: linear-gradient(rgba(38, 50, 56, 0.8), rgba(38, 50, 56, 0.8)), url('/featurebanner.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background-color: var(--white);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-btn i {
+            font-size: 20px;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.nutrition.active, .category-btn.nutrition:hover {
+            background-color: var(--nutrition);
+            color: var(--white);
+        }
+
+        .category-btn.fitness.active, .category-btn.fitness:hover {
+            background-color: var(--fitness);
+            color: var(--white);
+        }
+
+        .category-btn.mental.active, .category-btn.mental:hover {
+            background-color: var(--mental-health);
+            color: var(--white);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 60px 0;
+            display: none;
+        }
+
+        .features-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .nutrition-header h2 {
+            color: var(--nutrition);
+        }
+
+        .fitness-header h2 {
+            color: var(--fitness);
+        }
+
+        .mental-header h2 {
+            color: var(--mental-health);
+        }
+
+        .section-header p {
+            color: #546E7A;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+            font-size: 30px;
+        }
+
+        .feature-card.nutrition .feature-icon {
+            color: var(--nutrition);
+        }
+
+        .feature-card.fitness .feature-icon {
+            color: var(--fitness);
+        }
+
+        .feature-card.mental .feature-icon {
+            color: var(--mental-health);
+        }
+
+        .feature-content {
+            flex-grow: 1;
+        }
+
+        .feature-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-content p {
+            margin-bottom: 20px;
+            color: #546E7A;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background-color: rgba(255, 209, 92, 0.1);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Technology Section */
+        .technology-section {
+            padding: 80px 0;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .tech-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .tech-card p {
+            font-size: 14px;
+            color: #B0BEC5;
+        }
+
+        /* Integrations Section */
+        .integrations-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .integration-categories {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .category-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: var(--light);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab i {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .category-tab span {
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .category-tab.active {
+            background: var(--gradient);
+        }
+
+        .category-tab.active i, 
+        .category-tab.active span {
+            color: var(--white);
+        }
+
+        .integration-category {
+            display: none;
+        }
+
+        .integration-category.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .integration-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .integration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .integration-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-right: 20px;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .integration-logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .integration-info {
+            flex: 1;
+        }
+
+        .integration-info h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+            color: var(--dark);
+        }
+
+        .integration-info p {
+            color: #546E7A;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .integration-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .integration-cta {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--light);
+            border-radius: 15px;
+        }
+
+        .integration-cta p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 992px) {
+            .integrations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .integration-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-tab {
+                width: 100%;
+                max-width: 300px;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .category-tab i {
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+        }
+
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
+
+        .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a {
+            color: #B0BEC5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #37474F;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #37474F;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Holisti<span>Q</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
+                    <li><a href="index.html#technology">Technology</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="index.html#contact" class="btn">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Powerful Features for Your <span>Holistic</span> Wellness</h1>
+            <p>Discover how HolistiQ combines cutting-edge technology with personalized health management to transform your nutrition, fitness, and mental wellbeing.</p>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <div class="container">
+        <div class="category-nav">
+            <button class="category-btn nutrition active" data-target="nutrition">
+                <i class="fas fa-utensils"></i>
+                Nutrition
+            </button>
+            <button class="category-btn fitness" data-target="fitness">
+                <i class="fas fa-dumbbell"></i>
+                Fitness
+            </button>
+            <button class="category-btn mental" data-target="mental">
+                <i class="fas fa-brain"></i>
+                Mental Health
+            </button>
+        </div>
+    </div>
+
+    <!-- Nutrition Features Section -->
+    <section id="nutrition" class="features-section nutrition active">
+        <div class="container">
+            <div class="section-header nutrition-header">
+                <h2>Nutrition Features</h2>
+                <p>Transform your eating habits with AI-powered nutrition management that adapts to your preferences and goals.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Recipe Dashboard -->
+                <div class="feature-card nutrition">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>AI Recipe Dashboard</h3>
+                        <p>Access a dynamic dashboard with personalized meal suggestions that adapt to your nutritional goals, preferences, and dietary restrictions.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calorie Tracker -->
+                <div class="feature-card nutrition">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Intelligent Calorie Tracker</h3>
+                        <p>Monitor your daily calorie intake and macronutrient balance with AI-powered analysis that provides actionable insights for improving your nutrition.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Data Analytics</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meal Scanner -->
+                <div class="feature-card nutrition">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Visual Meal Scanner</h3>
+                        <p>Simply take a photo of your meal, and our computer vision technology will identify ingredients, estimate portions, and calculate nutritional information instantly.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalized Meal Recs -->
+                <div class="feature-card nutrition">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Culturally Relevant Meal Recommendations</h3>
+                        <p>Receive meal suggestions that honor your cultural preferences and traditions while aligning with your nutritional goals and dietary requirements.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adaptive Adjustments -->
+                <div class="feature-card nutrition">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Adaptive Nutrition Plans</h3>
+                        <p>Your nutrition plans automatically adjust based on your progress, feedback, and changing goals, ensuring optimal results and sustainable healthy eating habits.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitness Features Section -->
+    <section id="fitness" class="features-section fitness">
+        <div class="container">
+            <div class="section-header fitness-header">
+                <h2>Fitness Features</h2>
+                <p>Elevate your physical training with AI-powered workouts and real-time form analysis tailored to your fitness level.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Body Scan Analysis -->
+                <div class="feature-card fitness">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Body Scan Analysis</h3>
+                        <p>Use your phone's camera to analyze your body composition, posture, and movement patterns, providing a baseline for personalized workout recommendations.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Pose Estimation</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connects to Personal Trainer -->
+                <div class="feature-card fitness">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Personal Trainer Connection</h3>
+                        <p>Seamlessly connect with certified fitness professionals who can review your data, provide customized guidance, and adjust your training program as needed.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Data Analytics</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form & Technique Analysis -->
+                <div class="feature-card fitness">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Real-time Form Analysis</h3>
+                        <p>Receive instant feedback on your exercise technique to maximize effectiveness and prevent injuries through advanced pose estimation technology.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Pose Estimation</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalized Workout Recs -->
+                <div class="feature-card fitness">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Personalized Workout Plans</h3>
+                        <p>Access workout routines tailored to your fitness level, goals, available equipment, and time constraints, with intelligent progressions as you advance.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adaptive Adjustments -->
+                <div class="feature-card fitness">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Adaptive Training Plans</h3>
+                        <p>Your workout routines evolve based on your performance data, recovery metrics, and feedback, ensuring optimal progression and preventing plateaus.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mental Health Features Section -->
+    <section id="mental" class="features-section mental">
+        <div class="container">
+            <div class="section-header mental-header">
+                <h2>Mental Health Features</h2>
+                <p>Support your emotional wellbeing with AI-powered tools designed to reduce stress and build positive habits.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Mood & Stress Tracking -->
+                <div class="feature-card mental">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Mood & Stress Tracker</h3>
+                        <p>Easily log your daily emotions and stress levels, with AI-powered sentiment analysis providing insights into patterns and potential triggers.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Sentiment Analysis</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mindfulness Meditation Recs -->
+                <div class="feature-card mental">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-om"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Personalized Mindfulness</h3>
+                        <p>Receive custom meditation and relaxation exercises based on your emotional state, stress levels, and personal preferences to promote mental wellbeing.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Habit Tracker -->
+                <div class="feature-card mental">
+                    <div class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Smart Habit Builder</h3>
+                        <p>Develop and maintain positive habits through gamified tracking, intelligent reminders, and personalized recommendations to support your mental health.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Gamification</span>
+                            <span class="tech-tag">Data Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology-section" id="technology">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powered by Advanced Technology</h2>
+                <p>HolistiQ leverages cutting-edge AI technologies to deliver a truly personalized experience.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Computer Vision</h3>
+                    <p>Analyzes food images, body scans, and exercise form to provide detailed insights and recommendations.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Pose Estimation</h3>
+                    <p>Tracks body movements to analyze workout form, improving effectiveness and preventing injuries.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Understands your journal entries, preferences, and emotions to deliver personalized recommendations.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Continuously adapts and improves recommendations based on your progress and feedback.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <p>Processes your health metrics to identify patterns and optimize your personalized wellness plan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Integrations Section -->
+    <section class="integrations-section" id="integrations">
+        <div class="container">
+            <div class="section-header">
+                <h2>App Integrations</h2>
+                <p>HolistiQ seamlessly connects with your favorite apps and services to create a unified wellness experience</p>
+            </div>
+            
+            <div class="integration-categories">
+                <div class="category-tab active" data-category="nutrition">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </div>
+                <div class="category-tab" data-category="fitness">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Fitness</span>
+                </div>
+                <div class="category-tab" data-category="mental">
+                    <i class="fas fa-brain"></i>
+                    <span>Mental Health</span>
+                </div>
+            </div>
+            
+            <div class="integration-content">
+                <!-- Nutrition Integrations -->
+                <div class="integration-category active" id="nutrition-integrations">
+                    <div class="integrations-grid">
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Factor.jpg" alt="Factor Meals Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Factor Meals</h3>
+                                <p>Fresh, chef-prepared meals delivered to your door based on your HolistiQ nutrition plan</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Auto-Ordering</span>
+                                    <span class="feature-tag">Custom Macros</span>
+                                    <span class="feature-tag">Special Diets</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="mfp.png" alt="MyFitnessPal Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>MyFitnessPal</h3>
+                                <p>Sync nutrition data between apps for comprehensive tracking and analysis</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Data Sync</span>
+                                    <span class="feature-tag">Food Database</span>
+                                    <span class="feature-tag">Barcode Scanning</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Instacart-Emblem.png" alt="Instacart Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Instacart</h3>
+                                <p>Automatically generate grocery lists and schedule deliveries based on your meal plans</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Auto Shopping List</span>
+                                    <span class="feature-tag">Scheduled Delivery</span>
+                                    <span class="feature-tag">Ingredient Substitution</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="HelloFresh-Logo.jpg" alt="Hello Fresh Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Hello Fresh</h3>
+                                <p>Meal kits aligned with your HolistiQ nutrition goals and cultural preferences</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Personalized Selection</span>
+                                    <span class="feature-tag">Cultural Recipes</span>
+                                    <span class="feature-tag">Portion Control</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fitness Integrations -->
+                <div class="integration-category" id="fitness-integrations">
+                    <div class="integrations-grid">
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Strava.png" alt="Strava Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Strava</h3>
+                                <p>Track outdoor activities and share achievements with your fitness community</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">GPS Tracking</span>
+                                    <span class="feature-tag">Community Challenges</span>
+                                    <span class="feature-tag">Performance Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="nrc.png" alt="Nike Run Club Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Nike Run Club</h3>
+                                <p>Guided runs and training plans that sync with your HolistiQ fitness goals</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Guided Audio Runs</span>
+                                    <span class="feature-tag">Training Plans</span>
+                                    <span class="feature-tag">Progress Tracking</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Fitbit-Emblem.jpg" alt="Fitbit Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Fitbit</h3>
+                                <p>Connect your wearable device for comprehensive health and activity tracking</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Sleep Analysis</span>
+                                    <span class="feature-tag">Heart Rate Data</span>
+                                    <span class="feature-tag">Activity Tracking</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="apple-health-icon.png" alt="Apple Health Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Apple Health</h3>
+                                <p>Centralize all your health data for a complete picture of your wellness journey</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Data Hub</span>
+                                    <span class="feature-tag">HealthKit Integration</span>
+                                    <span class="feature-tag">Medical Records</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mental Health Integrations -->
+                <div class="integration-category" id="mental-integrations">
+                    <div class="integrations-grid">
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Headspace.jpg" alt="Headspace Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Headspace</h3>
+                                <p>Guided meditations recommended based on your stress levels and mental wellbeing data</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Personalized Meditation</span>
+                                    <span class="feature-tag">Sleep Stories</span>
+                                    <span class="feature-tag">Stress Management</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Calm.jpeg" alt="Calm Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Calm</h3>
+                                <p>Relaxation techniques and sleep assistance integrated with your HolistiQ wellness plan</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Sleep Sounds</span>
+                                    <span class="feature-tag">Breathing Exercises</span>
+                                    <span class="feature-tag">Daily Calm</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="Jour.jpeg" alt="Jour Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>Jour</h3>
+                                <p>Journaling prompts based on your mood tracking and wellness goals</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Guided Journaling</span>
+                                    <span class="feature-tag">Mood Analysis</span>
+                                    <span class="feature-tag">Reflection Prompts</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-logo">
+                                <img src="bettersleep.png" alt="BetterSleep Logo">
+                            </div>
+                            <div class="integration-info">
+                                <h3>BetterSleep</h3>
+                                <p>Sleep tracking and improvement techniques that sync with your holistic health data</p>
+                                <div class="integration-features">
+                                    <span class="feature-tag">Sleep Cycles</span>
+                                    <span class="feature-tag">Bedtime Stories</span>
+                                    <span class="feature-tag">Sleep Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="integration-cta">
+                <p>Our developer API allows for custom integrations with additional services and applications</p>
+                <a href="#" class="btn">Explore API Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Experience the Future of Fitness & Nutrition</h2>
+            <p>Try our interactive demo to see how HolistiQ can transform your health journey with personalized AI-powered recommendations.</p>
+            <a href="demo.html" class="btn btn-light">Launch Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>HolistiQ</h4>
+                    <p>AI-powered fitness and nutrition platform revolutionizing personalized health management.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#nutrition">Nutrition</a></li>
+                        <li><a href="#fitness">Fitness</a></li>
+                        <li><a href="#mental">Mental Health</a></li>
+                        <li><a href="demo.html">AI Trainer</a></li>
+                        <li><a href="#">Progress Tracking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HolistiQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Category Tabs
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const featuresSections = document.querySelectorAll('.features-section');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-target');
+                
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update active section
+                featuresSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === target) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#nutrition' || targetId === '#fitness' || targetId === '#mental') {
+                    const targetCategory = targetId.substring(1);
+                    
+                    // Trigger click on the appropriate category button
+                    document.querySelector(`.category-btn[data-target="${targetCategory}"]`).click();
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Feature Card Animation on Scroll
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+    <script>
+        // Category Tabs for Integrations
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const integrationCategories = document.querySelectorAll('.integration-category');
+    
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all categories
+                integrationCategories.forEach(category => category.classList.remove('active'));
+                
+                // Show category corresponding to clicked tab
+                const categoryId = tab.getAttribute('data-category') + '-integrations';
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
