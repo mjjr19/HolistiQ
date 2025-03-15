@@ -1,0 +1,89 @@
+{
+    "snacks": [
+      {
+        "id": 1,
+        "name": "Greek Yogurt with Berries",
+        "brand": "Generic",
+        "calories": 150,
+        "protein": 15,
+        "fat": 3,
+        "carbs": 12,
+        "category": "Dairy",
+        "dietaryFlags": {
+          "glutenFree": true,
+          "vegetarian": true
+        },
+        "stores": ["Whole Foods", "Trader Joe's", "Target"],
+        "benefits": "High in protein and probiotics, supports gut health",
+        "image": "https://spoonacular.com/productImages/greek-yogurt.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Trail Mix (Nuts and Dried Fruit)",
+        "brand": "Generic",
+        "calories": 180,
+        "protein": 5,
+        "fat": 12,
+        "carbs": 14,
+        "category": "Nuts and Seeds",
+        "dietaryFlags": {
+          "vegan": true,
+          "glutenFree": true
+        },
+        "stores": ["Costco", "Target", "Whole Foods"],
+        "benefits": "Good source of healthy fats and sustained energy",
+        "image": "https://spoonacular.com/productImages/trail-mix.jpg"
+      },
+      {
+        "id": 3,
+        "name": "RXBar Chocolate Sea Salt",
+        "brand": "RXBAR",
+        "calories": 210,
+        "protein": 12,
+        "fat": 8,
+        "carbs": 22,
+        "category": "Protein Bar",
+        "dietaryFlags": {
+          "glutenFree": true,
+          "dairyFree": true
+        },
+        "stores": ["Target", "Whole Foods", "GNC"],
+        "benefits": "Clean ingredients, good for post-workout recovery",
+        "image": "https://spoonacular.com/productImages/rxbar.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Roasted Chickpeas",
+        "brand": "Saffron Road",
+        "calories": 120,
+        "protein": 6,
+        "fat": 3,
+        "carbs": 18,
+        "category": "Legumes",
+        "dietaryFlags": {
+          "vegan": true,
+          "glutenFree": true
+        },
+        "stores": ["Trader Joe's", "Target", "Whole Foods"],
+        "benefits": "High in fiber and plant protein, supports digestion",
+        "image": "https://spoonacular.com/productImages/chickpeas.jpg"
+      },
+      {
+        "id": 5,
+        "name": "String Cheese",
+        "brand": "Organic Valley",
+        "calories": 80,
+        "protein": 7,
+        "fat": 5,
+        "carbs": 1,
+        "category": "Dairy",
+        "dietaryFlags": {
+          "glutenFree": true,
+          "vegetarian": true
+        },
+        "stores": ["Any grocery store"],
+        "benefits": "Convenient protein source with calcium",
+        "image": "https://spoonacular.com/productImages/string-cheese.jpg"
+      }
+    ]
+  }
